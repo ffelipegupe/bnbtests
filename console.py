@@ -17,14 +17,17 @@ class HBNBCommand(cmd.Cmd):
         "Review"
     }
 
-    def do_quit(self, s):
-        """Quit command to exit the program."""
+    def do_quit(self):
         return True
 
     def emptyline(self):
         pass
 
+    def help_quit(self):
+        print("Quit command to exit the program")
+
     do_EOF = do_quit
+    help_EOF = help_quit
 
     def do_create(self, arg):
         """

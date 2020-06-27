@@ -27,6 +27,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         self.__dict__['__class__'] = type(self).__name__

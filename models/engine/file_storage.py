@@ -23,7 +23,7 @@ class FileStorage:
 
     def reload(self):
         try:
-            with open (FileStorage.__file_path) as f:
+            with open(FileStorage.__file_path) as f:
                 objdic = json.load(f)
                 for value in objdic.values():
                     cls_name = value["__class__"]

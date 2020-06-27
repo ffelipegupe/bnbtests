@@ -8,8 +8,8 @@ from uuid import uuid4
 class BaseModel:
     def __init__(self, *args, **kwargs):
         self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        self.created_at = datetime.today()
+        self.updated_at = datetime.today()
         if kwargs:
             datefor = '%Y-%m-%dT%H:%M:%S.%f'
             self.id = kwargs.get('id')
@@ -27,7 +27,7 @@ class BaseModel:
         return "[{}] ({}) {}".format(a, b, c)
 
     def save(self):
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.today()
         models.storage.save()
 
     def to_dict(self):

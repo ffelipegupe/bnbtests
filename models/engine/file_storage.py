@@ -25,9 +25,9 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path) as f:
                 objdic = json.load(f)
-                for value in objdic.values():
-                    cls_name = value["__class__"]
-                    del value["__class__"]
-                    self.new(eval(cls_name)(**value))
+                for o in objdic.values():
+                    cls_name = o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(cls_name)(**o))
         except FileNotFoundError:
             return

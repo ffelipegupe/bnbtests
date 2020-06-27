@@ -36,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in HBNBCommand.__functions:
             print("** class doesn't exist **")
         else:
-            print(eval(args[0]().id))
+            print(eval(args[0])().id)
             storage.save()
 
 def parse(arg):

@@ -30,6 +30,10 @@ class HBNBCommand(cmd.Cmd):
     help_EOF = help_quit
 
     def do_create(self, arg):
+        """ 
+        Usage: create <class>
+        Creates a new instance of BaseModel prints the id
+        """
         args = parse(arg)
         if len(args) == 0:
             print("** class name missing **")

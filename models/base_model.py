@@ -7,6 +7,9 @@ from uuid import uuid4
 
 class BaseModel:
     def __init__(self, *args, **kwargs):
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
         if kwargs:
             datefor = '%Y-%m-%dT%H:%M:%S.%f'
             self.id = kwargs.get('id')
@@ -15,9 +18,7 @@ class BaseModel:
             ua = datetime.strptime(kwargs.get('updated_at'), datefor)
             self.updated_at = ua
         else:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         a = type(self).__name__

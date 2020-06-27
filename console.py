@@ -8,7 +8,13 @@ from models.base_model import BaseModel
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     __functions = {
-        "BaseModel"
+        "BaseModel",
+        "User",
+        "State",
+        "City",
+        "Place",
+        "Amenity",
+        "Review"
     }
 
     def do_quit(self, s):
@@ -30,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in HBNBCommand.__functions:
             print("** class doesn't exist")
         else:
-            print(eval(args[1]().id))
+            print(eval(args[0]().id))
             storage.save()
 
 def parse(arg):

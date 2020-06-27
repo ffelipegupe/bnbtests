@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         args = parse(arg)
-        if len(args) == 1:
+        if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__functions:
             print("** class doesn't exist")

@@ -18,7 +18,9 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def do_quit(self, s):
-        """Quit command to exit the program"""
+        """
+        Quit command to exit the program
+        """
         return True
 
     def emptyline(self):
@@ -27,7 +29,8 @@ class HBNBCommand(cmd.Cmd):
     do_EOF = do_quit
 
     def do_create(self, arg):
-        """Usage: create <class>
+        """
+        Usage: create <class>
         Creates a new instance of BaseModel and prints the id
         """
         args = parse(arg)

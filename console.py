@@ -34,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__functions:
-            print("** class doesn't exist")
+            print("** class doesn't exist **")
         else:
             print(eval(args[0]().id))
             storage.save()

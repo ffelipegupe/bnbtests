@@ -1,7 +1,14 @@
 #!/usr/bin/python3
 """FileStorage class module"""
+
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage:
@@ -16,18 +23,17 @@ class FileStorage:
         FileStorage.__objects["{}.{}".format(keyobj, obj.id)] = obj
 
     def save(self):
-        dicobj = FileStorage.__objects
-        objdic = {obj: dicobj[obj].to_dict() for obj in dicobj.keys()}
-        with open(FileStorage.__file_path, "w") as f:
-            json.dump(objdic, f)
+        dicobj = {}
+        for key in self.__objects.keys():
+            dicobj[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, "w") as f:
+            json.dump(dicobj, f)
 
     def reload(self):
         try:
             with open(FileStorage.__file_path) as f:
                 objdic = json.load(f)
-                for o in objdic.values():
-                    cls_name = o["__class__"]
-                    del o["__class__"]
-                    self.new(eval(cls_name)(**o))
+                for key, value in objdic.items():
+                    self.__objects[key] = eval(value['__class__'])(value)
         except FileNotFoundError:
             return

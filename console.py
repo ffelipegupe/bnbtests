@@ -34,7 +34,8 @@ class HBNBCommand(cmd.Cmd):
     do_EOF = do_quit
 
     def do_create(self, arg):
-        """Usage: create <class>\nCreates a new instance of BaseModel and prints the id
+        """Usage: create <class>.
+        Creates a new instance of BaseModel and prints the id
         """
         args = parse(arg)
         if len(args) == 0:
@@ -48,7 +49,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_show(self, arg):
-        """Usage: show <class> <instance id>\nPrints the string representation of an instance based on the class name and id
+        """Usage: show <class> <instance id>.
+        Prints the string representation of an instance
         """
         args = parse(arg)
         sea = storage.all()
@@ -69,7 +71,8 @@ class HBNBCommand(cmd.Cmd):
                 print(sea[object_id])
 
     def do_destroy(self, arg):
-        """Usage: destroy <class> <id>\nDeletes an instance based on the class name and id
+        """Usage: destroy <class> <id>.
+        Deletes an instance based on the class name and id
         """
         args = parse(arg)
         sea = storage.all()
@@ -87,7 +90,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        """Usage: all / all <class>\nPrints all string representation of all instances based or not on the class name
+        """Usage: all / all <class>.
+        Prints all string representation of all instances
         """
         args = parse(arg)
         if len(args) > 0 and args[0] not in HBNBCommand.__names:
@@ -103,7 +107,8 @@ class HBNBCommand(cmd.Cmd):
             print(nls)  
 
     def do_update(self, arg):
-        """Usage: update <class name> <id> <attribute name> "<attribute value>"\nUpdates an instance based on the class name and id
+        """Usage: update <class name> <id> <attribute name>"<attribute value>"
+        Updates an instance based on the class name and id
         """
         args = parse(arg)
         sea = storage.all()

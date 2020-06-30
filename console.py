@@ -4,6 +4,10 @@ import sys
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -42,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(eval(args[0])().id)
             storage.save()
-    
+
     def do_show(self, arg):
         """Usage: show <class> <instance id>\nPrints the string representation of an instance based on the class name and id
         """
@@ -63,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
                     a = 1
             if a == 1:
                 print(sea[object_id])
-    
+
     def do_destroy(self, arg):
         """Usage: destroy <class> <id>\nDeletes an instance based on the class name and id
         """
@@ -81,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             del sea["{}.{}".format(args[0], args[1])]
             storage.save()
-        
+
     def do_all(self, arg):
         """Usage: all / all <class>\nPrints all string representation of all instances based or not on the class name
         """
@@ -122,6 +126,8 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
 def parse(arg):
+    """Function that parse arguments
+    """
     return tuple(map(str, arg.split()))
 
 if __name__ == '__main__':

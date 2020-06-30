@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-"""BaseModel Class module"""
+""" BaseModel Class module """
 import models
 from datetime import datetime
 from uuid import uuid4
 
 
 class BaseModel:
+    """ BaseModel class body """
     def __init__(self, *args, **kwargs):
+        """ Instantation """
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
@@ -21,16 +23,19 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
+        """ __str__ modification """
         a = type(self).__name__
         b = self.id
         c = self.__dict__
         return "[{}] ({}) {}".format(a, b, c)
 
     def save(self):
+        """ Updates the public instance attribute updated_at with the current datetime """
         self.updated_at = datetime.today()
         models.storage.save()
 
     def to_dict(self):
+        """ returns a dictionary containing all keys/values of __dict__ of the instance """
         ndict = self.__dict__.copy()
         ndict['__class__'] = self.__class__.__name__
         ndict['created_at'] = self.created_at.isoformat()

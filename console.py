@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
                         nls.append(find.__str__())
                     elif len(args) == 0:
                         nls.append(find.__str__())
-            print(nls)  
+            print(nls)
 
     def do_update(self, arg):
         """Usage: update <class name> <id> <attribute name>"<attribute value>"
@@ -129,6 +129,7 @@ class HBNBCommand(cmd.Cmd):
                 if object_id == "{}.{}".format(args[0], args[1]):
                     setattr(sea[object_id], args[2], args[3].strip('"'))
         storage.save()
+
 
 def parse(arg):
     """Function that parse arguments
